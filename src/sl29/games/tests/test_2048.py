@@ -39,7 +39,7 @@ def test__get_cases_vides():
     ]
     attendu = [(0,0),(0,3),(1,1),(1,3),(3,3)]
     resultat =_get_cases_vides(plateau)
-    assert  resultat == attendu, f"normalemen : {attendu} mais : {resultat}"
+    assert  resultat == attendu, f"normalement : {attendu} mais : {resultat}"
     print("OK")
 
 
