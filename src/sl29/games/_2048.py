@@ -2,6 +2,7 @@
 
 import random
 from typing import List, Tuple
+import copy
 
 TAILLE:int = 4
 
@@ -82,7 +83,9 @@ def _ajouter_tuile(plateau: List[List[int]]) -> List[List[int]]:
     :return: Une nouvelle grille avec une tuile ajoutée.
     :rtype: List[List[int]]
     """
+    plateau = copy.deepcopy(plateau)
     cv = _get_cases_vides(plateau)
+    
     pos = random.randint(0,len(cv)-1)
     coord = cv[pos]
     ligne = coord[0]
@@ -100,7 +103,7 @@ def _supprimer_zeros(ligne: List[int]) -> List[int]:
     :return: La ligne sans zéros.
     :rtype: List[int]
     """
-    raise NotImplementedError("Fonction _supprimer_zeros non implémentée.")
+    return [e for e in ligne if e!=0]
 
 def _fusionner(ligne: List[int]) -> Tuple[List[int], int]:
     """

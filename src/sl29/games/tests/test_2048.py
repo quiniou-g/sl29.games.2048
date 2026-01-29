@@ -54,7 +54,7 @@ def test__ajouter_tuile():
             if valeur == 2:
                 compte_tuiles += 1
     assert compte_tuiles == 1, "Une seule tuile de valeur 2 devrait être ajoutée."
-    # assert plateau != nouveau_plateau, "Le plateau original ne doit pas être modifié"
+    assert plateau != nouveau_plateau, "Le plateau original ne doit pas être modifié"
 
     plateau_non_vide = [
         [2, 0, 0, 0],
@@ -70,12 +70,31 @@ def test__ajouter_tuile():
             if valeur == 2:
                 compte_tuiles2 += 1
     assert compte_tuiles2 == 2, "Il devrait y avoir deux tuiles de valeur 2 au total."
-    # assert plateau_non_vide != nouveau_plateau2, "Le plateau original ne doit pas être modifié"
+    assert plateau_non_vide != nouveau_plateau2, "Le plateau original ne doit pas être modifié"
     print("OK")
 
 def test__supprimer_zeros():
     print("----> Tests de _supprimer_zeros...")
-    raise NotImplementedError("Tests de _supprimer_zeros non implémentés.")
+    ligne = [2,2,0]
+    result = supprimer_zeros(lignes)
+    expected = [2,2]
+    assert result == expected, f"attenfu : {expected} or resultat : {result}"
+    ligne = [1,1,0]
+    result = supprimer_zeros(lignes)
+    expected = [1,1]
+    assert result == expected, f"attenfu : {expected} or resultat : {result}"
+    ligne = [1,0,0]
+    result = supprimer_zeros(lignes)
+    expected = [1]
+    assert result == expected, f"attenfu : {expected} or resultat : {result}"
+    ligne = [0,1,0]
+    result = supprimer_zeros(lignes)
+    expected = [1]
+    assert result == expected, f"attenfu : {expected} or resultat : {result}"
+    
+    
+    
+    
     print("OK")
 
 def test__fusionner():
