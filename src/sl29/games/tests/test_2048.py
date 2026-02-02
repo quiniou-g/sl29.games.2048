@@ -76,25 +76,22 @@ def test__ajouter_tuile():
 def test__supprimer_zeros():
     print("----> Tests de _supprimer_zeros...")
     ligne = [2,2,0]
-    result = supprimer_zeros(lignes)
+    result = _supprimer_zeros(ligne)
     expected = [2,2]
     assert result == expected, f"attenfu : {expected} or resultat : {result}"
-    ligne = [1,1,0]
-    result = supprimer_zeros(lignes)
-    expected = [1,1]
+    ligne = [0,0,0]
+    result = _supprimer_zeros(ligne)
+    expected = []
     assert result == expected, f"attenfu : {expected} or resultat : {result}"
     ligne = [1,0,0]
-    result = supprimer_zeros(lignes)
+    result = _supprimer_zeros(ligne)
     expected = [1]
     assert result == expected, f"attenfu : {expected} or resultat : {result}"
-    ligne = [0,1,0]
-    result = supprimer_zeros(lignes)
-    expected = [1]
+    ligne = [1,1,1]
+    result = _supprimer_zeros(ligne)
+    expected = [1,1,1]
     assert result == expected, f"attenfu : {expected} or resultat : {result}"
-    
-    
-    
-    
+   
     print("OK")
 
 def test__fusionner():
