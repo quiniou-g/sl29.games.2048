@@ -157,18 +157,51 @@ def test__deplacer_gauche():
     attendu_pts = 4 + 8 + 8 + 4 # 24 points
 
     resultat, points = _deplacer_gauche(plateau)
-    assert resultat == attendu_p
-    assert points == attendu_pts
+    assert resultat == attendu_p, f"attendu {attendu_p} mais resultat {resultat}"
+    assert points == attendu_pts, f" attendu {attendu_pts} mais resultat {points}"
     print("OK")
 
 def test__inverser_lignes():
     print("----> Tests de _inverser_lignes...")
-    raise NotImplementedError("Tests de _inverser_lignes non implémentés.")
+    
+    plateau = [
+        [2, 2, 0, 0],
+        [2, 2, 2, 2],
+        [0, 0, 4, 4],
+        [8, 4, 2, 2]
+    ]
+    attendu = [
+        [0, 0, 2, 2],
+        [2, 2, 2, 2],
+        [4, 4, 0, 0],
+        [2, 2, 4, 8]
+    ]
+    result = _inverser_lignes(plateau)
+    assert result == attendu, f"attendu {attendu} mais resultat : {result}"
+
     print("OK")
 
 def test__deplacer_droite():
     print("----> Tests de _deplacer_droite...")
-    raise NotImplementedError("Tests de _deplacer_droite non implémentés.")
+    plateau = [
+        [2, 2, 0, 0],
+        [2, 2, 2, 2],
+        [0, 0, 4, 4],
+        [8, 4, 2, 2]
+    ]
+    # Rappel : [2,2,2,2] -> [0,0,4,4] (8 pts)
+    # [8,4,2,2] -> [0,8,4,4] (4 pts)
+    attendu_p = [
+        [0, 0, 0, 4],
+        [0, 0, 4, 4],
+        [0, 0, 0, 8],
+        [0, 8, 4, 4]
+    ]
+    attendu_pts = 4 + 8 + 8 + 4 # 24 points
+
+    resultat, points = _deplacer_droite(plateau)
+    assert resultat == attendu_p, f"attendu {attendu_p} mais resultat {resultat}"
+    assert points == attendu_pts, f" attendu {attendu_pts} mais resultat {points}"
     print("OK")
 
 def test__transposer():

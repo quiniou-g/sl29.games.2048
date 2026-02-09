@@ -129,23 +129,36 @@ def _fusionner(ligne: List[int]) -> Tuple[List[int], int]:
 
 def _completer_zeros(ligne): # ajouter les annotations de type
     """
-    DOCSTRING À ECIRE
+   complète de 0 les cases vides d'une ligne.
+
+    :param ligne: Une ligne sans zéros.
+    :type ligne: List[int]
+    :return: La ligne 
+    :rtype: Tuple[List[int], int]
     """
     while len(ligne)<4 :
         ligne.append(0)
     return ligne
 
-def _deplacer_gauche(plateau) : # ajouter les annotations de type
+def _deplacer_gauche(plateau :List[List[int]]) -> List[List[int]] :
     """
     DOCSTRING À ÉCRIRE
     """
-    raise NotImplementedError("Fonction _deplacer_gauche non implémentée.")
+    nvplateau = []
+    nvpoints = 0
+    for ligne in plateau:
+        ligne_sans_zeros = _supprimer_zeros(ligne)
+        ligne_fusionnee, points = _fusionner(ligne_sans_zeros)
+        nvpoints = nvpoints + points
+        ligne_finale = _completer_zeros(ligne_fusionnee)
+        nvplateau.append(ligne_finale)
+    return nvplateau, nvpoints
 
-def _inverser_lignes(plateau): # ajouter les annotations de type
+def _inverser_lignes(plateau:List[List[int]]) -> List[List[int]] :
     """
     DOCSTRING À ÉCRIRE
     """
-    raise NotImplementedError("Fonction _inverser_lignes non implémentée.")
+    return [ligne[::-1] for ligne in plateau]
 
 def _deplacer_droite(plateau: List[List[int]]) -> Tuple[List[List[int]], int]:
     """
@@ -156,8 +169,10 @@ def _deplacer_droite(plateau: List[List[int]]) -> Tuple[List[List[int]], int]:
     :return: Un tuple contenant la nouvelle grille après déplacement et les points gagnés.
     :rtype: Tuple[List[List[int]], int]
     """
-    raise NotImplementedError("Fonction _deplacer_droite non implémentée.")
-
+    plateau_inverse = _inverser_lignes(plateau)
+    result, points = _deplacer_gauche(plateau_inverse)
+    return _inverser_lignes(result), points
+    
 def _transposer(plateau): # ajouter les annotations de type
     """
     DOCSTRING À ÉCRIRE
